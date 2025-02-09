@@ -12,16 +12,10 @@ public class RabbitMQController {
         this.producer = producer;
     }
 
-    @GetMapping("/send")
-    public String sendMessage(@RequestParam String message) {
-        producer.sendMessage(message);
-        return "Message envoyé : " + message;
+    @PostMapping("/send")
+    public String sendObjet(@RequestBody ProductDto productDto) {
+        producer.sendMessage(productDto);
+        return "Message envoyé : " + productDto.toString();
     }
-
-//    @PostMapping("/send")
-//    public String sendObjet(@RequestBody ProductDto productDto) {
-//        producer.sendMessage(productDto);
-//        return "Message envoyé : " + productDto;
-//    }
 
 }

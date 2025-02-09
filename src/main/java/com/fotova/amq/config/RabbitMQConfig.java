@@ -22,8 +22,8 @@ public class RabbitMQConfig {
     @Bean
     public Queue queue() {
         return QueueBuilder.durable(QUEUE_NAME)
-                .deadLetterExchange(DLX_NAME)       // 🔥 Utiliser un échange DLX distinct
-                .deadLetterRoutingKey(DLQ_ROUTING_KEY)  // La DLQ recevra ce routing key
+                .deadLetterExchange(DLX_NAME)
+                .deadLetterRoutingKey(DLQ_ROUTING_KEY)
                 .build();
     }
 
@@ -38,7 +38,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public TopicExchange deadLetterExchange() {  // 🔥 Définition de l'échange DLX
+    public TopicExchange deadLetterExchange() {
         return new TopicExchange(DLX_NAME,true,false);
     }
 

@@ -1,12 +1,13 @@
 package com.fotova.amq.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ProductDto implements Serializable {
     private Integer id;
     private String name;
-    private String quantity;
-    private String price;
+    private Integer quantity;
+    private Double price;
 
     public Integer getId() {
         return id;
@@ -24,19 +25,31 @@ public class ProductDto implements Serializable {
         this.name = name;
     }
 
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductDto that = (ProductDto) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(quantity, that.quantity) && Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, quantity, price);
     }
 }

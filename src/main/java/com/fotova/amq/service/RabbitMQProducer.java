@@ -12,15 +12,10 @@ public class RabbitMQProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(String message)
-    {
-        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, "routing.key.test", message);
-        System.out.println("Message envoyé : " + message);
-    }
 
-//    public void sendObjet(ProductDto productDto)
-//    {
-//        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, "routing.key.test", productDto);
-//        System.out.println("Message envoyé : " + productDto.toString());
-//    }
+    public void sendMessage(ProductDto productDto)
+    {
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, "routing.key.test", productDto);
+        System.out.println("Message envoyé : " + productDto.toString());
+    }
 }
